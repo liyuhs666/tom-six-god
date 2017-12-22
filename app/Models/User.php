@@ -10,12 +10,12 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass assignable.  这里代表user表可以进行插入(更新)的字段
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'introduction'
+        'name', 'email', 'password', 'introduction', 'avatar'
     ];
 
     /**

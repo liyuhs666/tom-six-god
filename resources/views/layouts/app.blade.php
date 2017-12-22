@@ -20,7 +20,9 @@
         @include('layouts._header')
 
         <div class="container">
-
+            
+            <!-- 跳转提示信息模板 -->
+            @include('layouts._message')
             @yield('content')
 
         </div>

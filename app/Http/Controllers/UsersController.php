@@ -10,6 +10,12 @@ use App\Handlers\ImageUploadHandler;
 class UsersController extends Controller
 {
 
+	//构造函数, 当载入此类时, 进行身份验证, 只允许游客访问show方法, 否则跳转到登录
+	public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
+
 	/**
 	 * 个人主页
 	 * @param  User   $user 当前用户模型
@@ -23,11 +29,13 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+    	$this->authorize('update', $user);	//授权策略
     	return view('users.edit', compact('user'));
     }
 
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {
+    	$this->authorize('update', $user);
         $data = $request->all();
 
         if ($request->avatar) {

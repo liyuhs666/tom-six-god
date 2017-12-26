@@ -62,7 +62,7 @@ class TopicsController extends Controller
 		$this->authorize('update', $topic);
 		$topic->update($request->all());
 
-		return redirect()->route('topics.show', $topic->id)->with('message', 'Updated successfully.');
+		return redirect()->route('topics.show', $topic->id)->with('message', '更新成功.');
 	}
 
 	public function destroy(Topic $topic)
@@ -70,7 +70,7 @@ class TopicsController extends Controller
 		$this->authorize('destroy', $topic);
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('topics.index')->with('message', '删除成功.');
 	}
 
 	public function create(Topic $topic)
@@ -102,5 +102,6 @@ class TopicsController extends Controller
         return $data;
     }
 
-    
+
+
 }

@@ -16,8 +16,7 @@ class AppServiceProvider extends ServiceProvider
 	{
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
 		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
-
-         \Carbon\Carbon::setLocale('zh');   //启用时间格式化插件
+        \Carbon\Carbon::setLocale('zh');   //启用时间格式化插件
     }
 
     /**

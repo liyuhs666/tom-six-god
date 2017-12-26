@@ -14,10 +14,17 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+
+    /**
+     * 帖子模块首页
+     * @param  Request $request post,get请求数据
+     * @param  Topic   $topic   topics表的orm
+     * @return [type]           [description]
+     */
+	public function index(Request $request, Topic $topic)
 	{
-		$topics = Topic::with('user', 'category')->paginate(40);	//每页显示
-		return view('topics.index', compact('topics'));
+		 $topics = $topic->withOrder($request->order)->paginate(20);
+        return view('topics.index', compact('topics'));
 	}
 
     public function show(Topic $topic)

@@ -10,9 +10,9 @@
                 <h2 class="text-center">
                     <i class="glyphicon glyphicon-edit"></i>
                     @if($topic->id)
-                        编辑话题
+                        edit a topics
                     @else
-                        新建话题
+                        create new topics
                     @endif
                 </h2>
 

@@ -1,6 +1,7 @@
 <?php
 
-Route::get('/', 'PagesController@root')->name('root');
+//    url访问   对应的控制器     对应的方法     路由名称
+Route::get('/', 'TopicsController@index')->name('root');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

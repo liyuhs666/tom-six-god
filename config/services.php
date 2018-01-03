@@ -36,9 +36,9 @@ return [
     ],
 
     'youdao_translate' => [
-        'appid' => env('YOUDAO_APP_ID'),
-        'key'   => env('YOUDAO_APP_KEY'),
-        'api'   => env('YOUDAO_APP_API'),
+        'appid' => '632116aeae99ce63',
+        'key'   => 'youdaoapiv12017',
+        'api'   => 'http://openapi.youdao.com/api?',
     ],
 
 ];

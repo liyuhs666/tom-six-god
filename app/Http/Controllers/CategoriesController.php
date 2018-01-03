@@ -25,8 +25,10 @@ class CategoriesController extends Controller
         $topics = $topic->withOrder($request->order)
                         ->where('category_id', $category->id)
                         ->paginate(20);
-        // 活跃用户列表
-        $active_users = $user->getActiveUsers();
+
+        // // 活跃用户列表  改动8
+        // $active_users = $user->getActiveUsers();
+    
         // 资源链接
         $links = $link->getAllCached();
         // 传参变量到模板中

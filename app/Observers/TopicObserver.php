@@ -3,7 +3,8 @@
 namespace App\Observers;
 
 use App\Models\Topic;
-use App\Jobs\TranslateSlug;
+// use App\Jobs\TranslateSlug; // 改动3
+use App\Handlers\SlugTranslateHandler;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -17,17 +18,23 @@ class TopicObserver
 
         // 生成话题摘录
         $topic->excerpt = make_excerpt($topic->body);
-    }
 
-    public function saved(Topic $topic)
-    {
-        // 如 slug 字段无内容，即使用翻译器对 title 进行翻译
+        // 如 slug 字段无内容，即使用翻译器对 title 进行翻译  这三行如果线下就注释掉  改动2
         if ( ! $topic->slug) {
-
-            // 推送任务到队列
-            dispatch(new TranslateSlug($topic));
+            $topic->slug = app(SlugTranslateHandler::class)->youdao($topic->title);
         }
     }
+
+    // 推上heroku 不使用队列 改动1
+    // public function saved(Topic $topic)
+    // {
+    //     // 如 slug 字段无内容，即使用翻译器对 title 进行翻译
+    //     if ( ! $topic->slug) {
+
+    //         // 推送任务到队列
+    //         dispatch(new TranslateSlug($topic));
+    //     }
+    // }
 
     public function deleted(Topic $topic)
     {

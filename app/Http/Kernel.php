@@ -55,8 +55,8 @@ class Kernel extends HttpKernel
             // 见：https://d.laravel-china.org/docs/5.5/routing#route-model-binding
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-            // 记录用户最后活跃时间
-            \App\Http\Middleware\RecordLastActivedTime::class,
+            // 记录用户最后活跃时间 改动6 关闭记录
+            // \App\Http\Middleware\RecordLastActivedTime::class,
         ],
 
         // API 中间件组，应用于 routes/api.php 路由文件

@@ -11,8 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
-    use Traits\ActiveUserHelper;
-    use Traits\LastActivedAtHelper;
+    // use Traits\ActiveUserHelper;  改动5 关闭边栏活跃用户 和 最后活跃时间
+    // use Traits\LastActivedAtHelper;
     
     use Notifiable {
         notify as protected laravelNotify;

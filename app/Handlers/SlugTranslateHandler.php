@@ -9,7 +9,6 @@ class SlugTranslateHandler
 {
     public function translate($text)
     {
-        var_dump($text);exit('');
 
         // 实例化 HTTP 客户端
         $http = new Client;
@@ -72,7 +71,6 @@ class SlugTranslateHandler
 
     public function youdao($text)
     {
-        var_dump($text);exit('');
 
         // 实例化 HTTP 客户端
         $http = new Client;

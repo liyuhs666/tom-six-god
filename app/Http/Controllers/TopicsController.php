@@ -30,10 +30,11 @@ class TopicsController extends Controller
 	public function index(Request $request, Topic $topic, User $user, Link $link)
     {
         $topics = $topic->withOrder($request->order)->paginate(20);
-        $active_users = $user->getActiveUsers();
+        // $active_users = $user->getActiveUsers();    改动7 关闭
         $links = $link->getAllCached();
 
-        return view('topics.index', compact('topics', 'active_users', 'links'));
+        // return view('topics.index', compact('topics', 'active_users', 'links'));
+        return view('topics.index', compact('topics', 'links'));
     }
 
 

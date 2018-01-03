@@ -29,16 +29,14 @@ class TopicsController extends Controller
      */
 	public function index(Request $request, Topic $topic, User $user, Link $link)
     {   
-        \DB::table('users')
-        ->where('id', 1)
-        ->update(array('password' => '$2y$10$cCqiCK9vhVubW.v33kxOSeTiF9yavmmRJLlgdlY6xM3Tav.0057hu'));
-        die();
-        // $topics = $topic->withOrder($request->order)->paginate(20);
-        // // $active_users = $user->getActiveUsers();    改动7 关闭
-        // $links = $link->getAllCached();
 
-        // // return view('topics.index', compact('topics', 'active_users', 'links'));
-        // return view('topics.index', compact('topics', 'links'));
+
+        $topics = $topic->withOrder($request->order)->paginate(20);
+        // $active_users = $user->getActiveUsers();    改动7 关闭
+        $links = $link->getAllCached();
+
+        // return view('topics.index', compact('topics', 'active_users', 'links'));
+        return view('topics.index', compact('topics', 'links'));
     }
 
 

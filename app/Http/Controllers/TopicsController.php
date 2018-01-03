@@ -29,9 +29,7 @@ class TopicsController extends Controller
      */
 	public function index(Request $request, Topic $topic, User $user, Link $link)
     {
-        echo '这是首页';
-        die;
-        
+
         $topics = $topic->withOrder($request->order)->paginate(20);
         // $active_users = $user->getActiveUsers();    改动7 关闭
         $links = $link->getAllCached();

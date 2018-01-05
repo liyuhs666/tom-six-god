@@ -12,6 +12,7 @@ use App\Models\User;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\Link;
+use Spatie\Permission\Traits\HasRoles;
 
 class TopicsController extends Controller
 {
@@ -29,10 +30,6 @@ class TopicsController extends Controller
      */
 	public function index(Request $request, Topic $topic, User $user, Link $link)
     {   
-
-        \DB::table('users')
-        ->where('id', 1)
-        ->update(array('password' => '$2y$10$3nLYet311sQKQxfY3nEm6.UgTzN5qPnfhMkHKK5TNgVCWRjZXe4pG'));
 
         $topics = $topic->withOrder($request->order)->paginate(20);
         // $active_users = $user->getActiveUsers();    改动7 关闭
